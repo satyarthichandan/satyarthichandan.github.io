@@ -1,0 +1,21 @@
+#pragma strict
+var Health = 100;
+
+function Update () {
+   if(Health <= 0)
+   {
+        Dead();
+   GameMaster.currentScore +=500;
+   saveobject.current_Score +=500; 
+   }
+   
+}
+function ApplyDamage1 (TheDamage : int)
+{
+      Health -=TheDamage;
+}
+
+function Dead()
+{
+Destroy(gameObject);
+}
