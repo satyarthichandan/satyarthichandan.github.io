@@ -1,0 +1,8 @@
+function Update() { transform.Translate(Vector3.forward * Time.deltaTime); }
+
+function OnCollisionEnter(theCollision : Collision){
+     if(theCollision.gameObject.tag == "building"){
+         GetComponent.<Rigidbody>().transform.eulerAngles.x = Random.Range(20, 180);
+         GetComponent.<Rigidbody>().transform.Translate(Vector3.forward * Time.deltaTime);
+     }
+ }
