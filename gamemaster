@@ -1,0 +1,27 @@
+#pragma strict
+import UnityEngine.UI;
+static var currentScore : int = 0;
+static var currentScore1 : int = 0;
+
+var countText:Text;
+var countText1:Text;
+
+
+
+
+
+var AttackerKilledScore = currentScore;
+var InncoentKilledScore = currentScore1;
+ 
+
+countText.text = "AttackerScore: " +AttackerKilledScore;
+countText1.text = "InnocentScore: " +InncoentKilledScore;
+
+function Update (){
+AttackerKilledScore = currentScore;
+InncoentKilledScore = currentScore1;
+  countText.text = "AttackerScore: " +AttackerKilledScore; 
+   countText1.text = "InnocentScore: " +InncoentKilledScore;
+   
+}
+
