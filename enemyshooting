@@ -1,0 +1,26 @@
+#pragma strict
+import System;
+var theBullet : Rigidbody;
+var speed = 50;
+
+
+function Update () {
+
+
+     shoot(); 
+      
+
+}
+function shoot(){
+yield WaitForSeconds(10);
+var rndNum: int = UnityEngine.Random.Range(1, 101);
+   
+   if(rndNum < 10)
+   {
+   yield WaitForSeconds(10);
+        var clone = Instantiate(theBullet, transform.position, transform.rotation);
+        clone.velocity = transform.TransformDirection(Vector3(0, 0, speed));
+      
+        Destroy(clone.gameObject, 1); 
+    }   
+    }
