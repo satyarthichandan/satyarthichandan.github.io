@@ -1,0 +1,24 @@
+#pragma strict
+import System;
+var theBullet : Rigidbody;
+var speed =500;
+var count =0;
+var fireText:Text;
+var sound : AudioClip;
+
+function Update () {
+
+
+if(Input.GetMouseButtonDown(0))
+      {
+      
+      count = count +1;
+        var clone = Instantiate(theBullet, transform.position, transform.rotation);
+        clone.velocity = transform.TransformDirection(Vector3(0, 0, speed));
+        GetComponent.<AudioSource>().PlayOneShot(sound);
+        Destroy(clone.gameObject, 3); 
+       
+      }
+      fireText.text = "Bullets Fired: " +count;
+
+}
