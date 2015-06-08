@@ -1,0 +1,55 @@
+import System;
+import System.IO;
+var fire = 0 ; 
+var didfire = "No";
+var fileFolder : String;
+var fileName: String;
+var saveFrequency : float;
+private var saveString : String;
+
+//counting score
+static var current_Score : int = 0;
+static var current_Score1 : int = 0;
+var AttackerKilledScore = current_Score;
+var InncoentKilledScore = current_Score1;
+ 
+ 
+
+//call the function "Save Location" from as soon as the script starts running and every "saveFrequency" seconds afterward
+InvokeRepeating("SaveLocation", 0, saveFrequency);
+
+
+
+function Awake() {
+
+	//create folder if it doesn't exist yet
+	if (!Directory.Exists (fileFolder)) {
+
+		Directory.CreateDirectory (fileFolder);
+		
+	}
+}
+
+function SaveLocation() {
+	//add time since program start and position and rotation of the recorded object to the string
+	var objPos = " Time " +Time.time + " Position " + transform.position.ToString() + " Rotation " + transform.rotation.ToString() + " Bulletsfired " + fire + " AttackerKilledScore " + AttackerKilledScore.ToString() + " InnocentKilledScore " + InncoentKilledScore.ToString() + " Fired " + didfire +  " \n " ;
+	//keep adding a new line with information for each save
+	saveString = saveString + "\n" + objPos;
+	
+}
+
+function Update() {
+	//save to hard disk when pressing A
+	didfire = "No";
+	AttackerKilledScore = current_Score;
+    InncoentKilledScore = current_Score1;
+  
+	if(Input.GetMouseButtonDown(0))
+      {
+      fire = fire+1;
+      didfire ="Yes";
+      }
+		Save.SaveTextFile(fileFolder+fileName+".txt", saveString);
+	    Save.SaveTextFile(fileFolder+fileName+".xls", saveString);
+	
+}
