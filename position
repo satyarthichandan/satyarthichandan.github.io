@@ -1,0 +1,29 @@
+using UnityEngine;
+using System.Collections;
+
+
+public class position : MonoBehaviour {
+	public float a;
+	public float b;
+	public float c;
+	// Use this for initialization
+	void load()
+	{
+		transform.position = new Vector3 (PlayerPrefs.GetFloat ("X"), PlayerPrefs.GetFloat ("Y"), PlayerPrefs.GetFloat ("Z"));
+	}
+	void Start () {
+		save ();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		save ();
+	}
+
+
+    void save(){
+		a=PlayerPrefs.GetFloat("X");
+		b=PlayerPrefs.GetFloat("Y");
+		c=PlayerPrefs.GetFloat("Z");
+	}
+}
