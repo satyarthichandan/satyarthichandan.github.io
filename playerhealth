@@ -1,0 +1,28 @@
+#pragma strict
+static var Health = 500;
+var countText:Text;
+var playerhealth = Health;
+countText.text = "PlayerHealth: " +playerhealth;
+
+function Update () {
+    playerhealth = Health;
+    countText.text = "PlayerHealth: " +playerhealth; 
+   if(Health <= 0)
+   {
+         Dead();
+         Application.Quit(); 
+   
+   }
+   
+}
+
+
+function ApplyDamage (TheDamage : int)
+{
+      Health -=TheDamage;
+}
+
+function Dead()
+{
+      Destroy(gameObject);
+}
